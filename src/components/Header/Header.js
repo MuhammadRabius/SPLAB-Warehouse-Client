@@ -1,9 +1,13 @@
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import logo from '../../images/logo.png' 
+import auth from '../../firebase.init';
 
 const Header = () => {
+      const [user]=useAuthState(auth);
       return (
             <div>
                         <Navbar className='py-2'>
@@ -20,7 +24,13 @@ const Header = () => {
                         
                         </Nav>
                         <Nav>
-                              <Nav.Link as={Link} to='/blog'>Login</Nav.Link>
+                              {
+                              user?
+                              
+                              <button onClick={()=>signOut(auth)} className='border-2 rounded-lg p-2 mx-2 text-black hover:bg-blue-400 '>Sing Out</button>
+                              :
+                              <Nav.Link className='border-2 rounded-lg p-2 mx-2 text-black hover:bg-blue-400 ' as={Link} to='/login'>Login</Nav.Link>
+                        }
                         </Nav>
                         </Navbar.Collapse>
                         </Container>
