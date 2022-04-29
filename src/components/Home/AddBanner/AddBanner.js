@@ -6,7 +6,7 @@ import thirdSlide from '../../../images/splab-banner (3).jpg'
 
 const AddBanner = () => {
       return (
-            <div>
+            <div className='pb-5'>
                   <Carousel fade>
                         <Carousel.Item>
                               <img
