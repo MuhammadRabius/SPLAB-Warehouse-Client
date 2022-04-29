@@ -8,11 +8,11 @@ const ProductCategory = () => {
       return (
             <div>
                    <h1 className='text-center font-thin pb-3'>SPLAB Medicine Category</h1>
-                   <div className='grid grid-cols-1 lg:grid-cols-3 sm:m-2 lg:m-10 lg:p-4  gap-4'>
-                         <div>
+                   <div className='grid grid-cols-1 lg:grid-cols-4 sm:m-2 lg:m-10 lg:p-4 gap-4'>
+                         <div >
                               <Card style={{ width: '18rem' }}>
                               <Card.Img variant="top" src={itemImg} />
-                              <Card.Body>
+                              <Card.Body >
                               <Card.Title>Tablet Section</Card.Title>
                               <Card.Text>
                                     
