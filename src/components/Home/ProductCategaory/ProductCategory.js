@@ -15,7 +15,8 @@ const ProductCategory = () => {
             .then(res=>res.json())
             .then(data=>setItem(data))
       },[])
-      const handleStock=()=>{
+      const handleStock=(id)=>{
+            navigate(`/stockhouse/${id}`);
            
       }
       
@@ -35,7 +36,7 @@ const ProductCategory = () => {
                                <Card.Subtitle className="mb-2">Seller: {item.seller}</Card.Subtitle>
                                <Card.Subtitle className="mb-2">Sell Per Unit:  {item.price}</Card.Subtitle>
                                <Card.Subtitle className="mb-2">In Stock :  {item.stock}</Card.Subtitle>
-                              <Button onClick={()=> navigate(`/stockhouse/${item._id}`)}> Manage Stock </Button>
+                              <Button onClick={handleStock(item._id)}> Manage Stock </Button>
                               
                               </Card.Body>
                              </Card>
