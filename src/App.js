@@ -11,12 +11,13 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import { ToastContainer } from 'react-bootstrap';
 import RequireAuth from './components/ReauireAuth/RequireAuth';
+import StockHouse from './components/StockHouse/StockHouse';
 
 
 function App() {
   return (
     <div>
-      <TopBanner/>
+      {/* <TopBanner/> */}
        <Header/>
       <Routes>
          <Route path='/' element={<Home/>} > </Route>
@@ -31,7 +32,9 @@ function App() {
          <Route path='/blog' element={<Blog/>}> </Route>
          <Route path='/login' element={<Login/>}> </Route>
          <Route path='/register' element={<Register/>}> </Route>
+         <Route path='/stockhouse' element={<StockHouse/>}> </Route>
          <Route path='/*' element={<NotFoundPage/>}> </Route>
+         
                  
 
 

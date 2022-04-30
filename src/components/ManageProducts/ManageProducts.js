@@ -9,7 +9,7 @@ const ManageProducts = () => {
             <div>
                  <h1 className='text-center font-thin pb-4'>SPLAB Product Medicine </h1> 
                 
-                <div className='grid grid-cols-3 m-10 p-4 gap-4'>
+                <div className='grid sm:grid-cols-1 lg:grid-cols-3 m-10 p-4 gap-4'>
                       {
                             products.map(product=> <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={product.img} />

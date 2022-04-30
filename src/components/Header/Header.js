@@ -10,7 +10,7 @@ const Header = () => {
       const [user]=useAuthState(auth);
       return (
             <div>
-                        <Navbar className='py-2'>
+                        <Navbar className='py-2 '>
                         <Container>
                         <Navbar.Brand className='d-flex justify-center items-center font-extralight gap-2' as={Link} to='/'> <img className='w-18 h-14' src={logo} alt="" />Sreepur Laboratories Management</Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -27,9 +27,9 @@ const Header = () => {
                               {
                               user?
                               
-                              <button onClick={()=>signOut(auth)} className='border-2 rounded-lg p-2 mx-2 text-black hover:bg-blue-400 '>Sing Out</button>
+                              <button onClick={()=>signOut(auth)} className='border-1 rounded-lg p-1 mx-2 text-black hover:bg-blue-400 '>Sing Out</button>
                               :
-                              <Nav.Link className='border-2 rounded-lg p-2 mx-2 text-black hover:bg-blue-400 ' as={Link} to='/login'>Login</Nav.Link>
+                              <Nav.Link className='border-1 rounded-lg p-2 mx-2 text-black hover:bg-blue-400 ' as={Link} to='/login'>Login</Nav.Link>
                         }
                         </Nav>
                         </Navbar.Collapse>

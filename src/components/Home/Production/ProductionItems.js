@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import useProducts from '../../CustomHooks/useProducts';
 import ProductDetails from '../ProductCategaory/ProductionDetails/ProductDetails';
+import './ProductionItems.css'
 
 const ProductionItems = () => {
       const [products]=useProducts();
@@ -15,7 +16,9 @@ const ProductionItems = () => {
                       }
                 </div>
                 
-
+                  <div className='manage-btn '>
+                        <button >Manage All Product</button>
+                  </div>
             </div>
       );
 };
