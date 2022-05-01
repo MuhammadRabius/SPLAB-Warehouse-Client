@@ -1,106 +1,52 @@
-import React,{ useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Button, Form, Nav } from 'react-bootstrap';
+import SocialLogin from '../Login/SocialLogin/SocialLogin';
+import './Register.css';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
-import { useSendEmailVerification } from 'react-firebase-hooks/auth';
-import { async } from '@firebase/util';
+
 
 
 const Register = () => {
-      const[agree,setAgree]=useState(false);
-      const [email,setEmail]=useState('');
-      const [password,setPassword]=useState('');
-      const [confirmPassword,SetConfirmPassowrd]=useState('');
-      const [error,setError]=useState('');
-      const navigate =useNavigate();
-       const [
-            createUserWithEmailAndPassword,
-            user,
-            loading,
+      const navigate=useNavigate();
+      const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
 
-       ] = useCreateUserWithEmailAndPassword(auth);
-
-       const [sendEmailVerification, 
-            sending] = useSendEmailVerification(auth);
-
-      const handleEmail =event=>{
-            
-            setEmail(event.target.value);
-            
-      }
-      const handPassword =(event)=>{
-            
-            setPassword(event.target.value);
-            
-      }
-
-      const handleConfirmPassword=(event)=>{
-            SetConfirmPassowrd(event.target.value);
-      }
-
-       
-      
-
-      const handleRegisterSubmit=(event)=>{
-            event.preventDefault();
-            const agree =event.target.terms.value;
-            console.log(agree);
-            if(password !==confirmPassword){
-                  setError('Invalid Password')
-                  return;
-            }
-            if(password.length<6){
-                  setError('Your Password Must be upto Six Digit');
-                  return;
-            }
-            
-           
-            createUserWithEmailAndPassword(email,password);
-           
+      const navigateLogin=()=>{
             navigate('/login')
-            
-            
-          
+      }
 
+      const handleRegister=async(event)=>{
+        event.preventDefault();
+        const name = event.target.name.value;
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        
+        await createUserWithEmailAndPassword(email,password);
+        navigate('/login')
       }
       return (
-            <div className='register-container'>
-                  <h1 className='text-center font-mono'>Register Now!</h1>
+            <div className='register-form'>
+                  <h2 style={{ textAlign: 'center' }}>Please Register</h2>
+            <form onSubmit={handleRegister}>
+                <input type="text" name="name" id="name" placeholder='Your Name' />
 
+                <input type="email" name="email" id="email" placeholder='Email Address' required />
 
-                  <div className='flex justify-center p-10 w-full font-serif'>
-                  
-                   <Form onSubmit={handleRegisterSubmit} className='border-2 rounded-md p-4 text-2xl'>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control className='p-3' onBlur={handleEmail} type="email" placeholder="Enter your email" required />
-                        <Form.Text className="text-muted">
-                              We'll never share your email with anyone else.
-                        </Form.Text>
-                        </Form.Group>
-                        
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control className='p-3' onBlur={handPassword} type="password" placeholder="Password" required/>
-                        </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Re-write Password</Form.Label>
-                        <Form.Control className='p-3' onBlur={handleConfirmPassword} type="password" placeholder="Re-write Password" required/>
-                        </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check  type="checkbox" name='terms' label="Accept Terms,Conditions and Privacy Policy" />
-                        </Form.Group>
-                        <p className='text-danger'>{error}</p>
-                        <Button variant="primary" type="submit">
-                        Submit
-                        </Button>
-                        
-                  </Form>
-            </div> 
-           </div>
+                <input type="password" name="password" id="password" placeholder='Password' required /> 
+                <input
+                   
+                    className='w-50 mx-auto btn btn-primary mt-2'
+                    type="submit"
+                    value="Register" />               
+            </form>
+            <p>Already have an account? <Link to="/login" className='text-primary pe-auto text-decoration-none' onClick={navigateLogin}>Please Login</Link> </p>
+            <SocialLogin/>
+            </div>
       );
 };
 

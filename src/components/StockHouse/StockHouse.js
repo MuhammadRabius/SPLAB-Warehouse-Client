@@ -35,7 +35,8 @@ const StockHouse = () => {
                             <Link to='/agents'>
                               <button className='border-1 bg-blue-500 p-2 mr-2 rounded-lg text-white'>Deliver to Dealer</button>
                             </Link>
-                            <button className='border-1 bg-blue-500 p-2 mr-2 rounded-lg text-white'>Updated inventory</button>
+                            <Link to='/additem'>
+                            <button className='border-1 bg-blue-500 p-2 mr-2 rounded-lg text-white'>Updated inventory</button></Link>
                              
                       </div>
                 </div>

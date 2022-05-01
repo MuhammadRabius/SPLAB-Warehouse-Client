@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 
 const AddItem = () => {
       const { register, handleSubmit } = useForm();
@@ -16,10 +17,12 @@ const AddItem = () => {
         .then(result =>{
             console.log(result);
         } )
+        
       };
       return (
-            <div className='w-50 mx-auto p-6 mt-10 border-4'>
-                  <h3 className='text-center text-4xl font-thin'>Add New Item</h3>
+            <div className='flex justify-center items-center m-4 p-2 gap-3'>
+                  <div className='w-50 mx-auto p-6 mt-10 border-4'>
+                        <h3 className='text-center text-4xl font-thin'>Add New Item</h3>
                    <form className='  flex flex-col  gap-2 mt-4' onSubmit={handleSubmit(onSubmit)}>
                         <input className='border-2 p-2' {...register("category")} placeholder='Please Enter Category Name' />
                         <input className='border-2 p-2' {...register("img")} placeholder='Category Photo URL' />
@@ -29,6 +32,11 @@ const AddItem = () => {
                          <input className='border-2 p-2' {...register("seller")} placeholder='Mention Seller Name' />
                         <input className=' p-2 bg-blue-500 text-white' type="submit" value='Add Item' />
                   </form> 
+                  </div>
+
+                  <div className='mt-10 w-50 mx-auto my-10 p-6 mt-10 border-4'>
+                         <h3 className='text-center text-4xl font-thin'>Update Item Stock</h3>
+                  </div>
             </div>
       );
 };

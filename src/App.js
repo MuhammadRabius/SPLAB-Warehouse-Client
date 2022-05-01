@@ -9,10 +9,11 @@ import Blog from './components/Blog/Blog';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
-import { ToastContainer } from 'react-bootstrap';
+ import { ToastContainer, toast } from 'react-toastify';
 import RequireAuth from './components/ReauireAuth/RequireAuth';
 import StockHouse from './components/StockHouse/StockHouse';
 import AddItem from './components/AddItem/AddItem';
+import MyItem from './components/MyItem/MyItem';
 
 
 function App() {
@@ -31,17 +32,26 @@ function App() {
          } > </Route>
          <Route path='/agents' element={<Agents/>}> </Route>
          <Route path='/blog' element={<Blog/>}> </Route>
+         <Route path='/myitem' element={<MyItem/>}> </Route>
          <Route path='/login' element={<Login/>}> </Route>
          <Route path='/register' element={<Register/>}> </Route>
-         <Route path='items/:itemId' element={<StockHouse/>}></Route>
-         <Route path='/additem' element={<AddItem/>}> </Route>
+         <Route path='items/:itemId' element={
+           <RequireAuth>
+             <StockHouse/>
+           </RequireAuth>
+         }></Route>
+         <Route path='/additem' element={
+           <RequireAuth>
+             <AddItem/>
+           </RequireAuth>
+         }> </Route>
          <Route path='/*' element={<NotFoundPage/>}> </Route>
          
                  
 
 
       </Routes>
-      <ToastContainer></ToastContainer>
+      <ToastContainer/>
 
 
 

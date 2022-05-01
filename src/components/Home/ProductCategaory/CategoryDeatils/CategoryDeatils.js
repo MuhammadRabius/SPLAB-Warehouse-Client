@@ -7,7 +7,7 @@ const CategoryDeatils = ({item}) => {
       const navigate=useNavigate()
      
       const handleStock=id=>{
-            navigate(`/items/${id}`);
+            navigate(`/additem`);
            
       }
       return (
