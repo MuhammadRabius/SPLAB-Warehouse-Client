@@ -15,7 +15,7 @@ const ManageProducts = () => {
             <div>
                  <h1 className='text-center font-thin pb-4'>SPLAB Medicine Item Category </h1> 
                 
-                <div className='grid sm:grid-cols-1 lg:grid-cols-3 m-10 p-4 gap-4'>
+                <div className='grid grid-cols-1 lg:grid-cols-3 m-6 lg:m-10 p-4 gap-4'>
                       {
                             items.map(item=>  <Card key={item._id} style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={item.img} />

@@ -14,7 +14,7 @@ const ProductCategory = () => {
       return (
             <div>
                    <h1 className='text-center font-thin pb-3'>SPLAB Medicine Category</h1>
-                   <div className='grid grid-cols-1 lg:grid-cols-3 sm:m-2 lg:m-10  gap-4'>
+                   <div className='grid grid-cols-1 lg:grid-cols-3 m-8 lg:m-10  gap-4'>
                          {
                                items.slice(0,6).map(item=>
                               <CategoryDeatils key={item._id} item={item}></CategoryDeatils>

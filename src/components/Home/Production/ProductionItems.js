@@ -10,15 +10,13 @@ const ProductionItems = () => {
             <div>
                 <h1 className='text-center font-thin pb-4'>SPLAB Product Medicine </h1> 
                 
-                <div className='grid grid-cols-3 m-10 p-4 gap-4'>
+                <div className='grid grid-cols-1 lg:grid-cols-3 m-8 lg:m-10 lg:p-4 p-2 gap-4'>
                       {
                             products.slice(0,6).map(product=> <ProductDetails key={product._id} product={product} ></ProductDetails> )
                       }
                 </div>
                 
-                  <div className='manage-btn '>
-                        <button >Manage All Product</button>
-                  </div>
+                  
             </div>
       );
 };
