@@ -5,13 +5,13 @@ import useItemCategory from './../CustomHooks/useItemCategory';
 
 const StockHouse = () => {
       const {itemId}=useParams();
-      const [items] =useItemCategory(itemId);
-      console.log(items.category);
+      const [item] =useItemCategory(itemId);
+      
       
       
       return (
             <div>
-                 <h1>Hi is is stock house:{items}</h1> 
+                 <h1>Hi is is stock house:{item.category}</h1> 
             </div>
       );
 };

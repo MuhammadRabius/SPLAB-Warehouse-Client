@@ -1,16 +1,17 @@
 
 import { useState, useEffect } from 'react';
-const useItemCategory =itemId=>{
+const useItemCategory =(itemId)=>{
       
-      const [items,setItem]=useState([]);
+      const [item,setItem]=useState({});
+      
       useEffect(()=>{
-            const url = `https://sleepy-thicket-75359.herokuapp.com/items/${itemId}`;
-            fetch(url)
+           
+             fetch(`http://localhost:5000/items/${itemId}`)
             .then(res=>res.json())
             .then(data=>setItem(data))
-      },[itemId])
+      },[itemId]);
 
-      return [items]
+      return [item];
 }
 
 export default useItemCategory;
