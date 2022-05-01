@@ -11,7 +11,7 @@ const useAllItem =()=>{
             .then(data=>setItem(data))
       },[]);
 
-      return [items]
+      return [items,setItem]
       
 }
 

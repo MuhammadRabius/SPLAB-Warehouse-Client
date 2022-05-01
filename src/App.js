@@ -32,7 +32,11 @@ function App() {
          } > </Route>
          <Route path='/agents' element={<Agents/>}> </Route>
          <Route path='/blog' element={<Blog/>}> </Route>
-         <Route path='/myitem' element={<MyItem/>}> </Route>
+         <Route path='/myitem' element={
+           <RequireAuth>
+             <MyItem/>
+             </RequireAuth>
+         }> </Route>
          <Route path='/login' element={<Login/>}> </Route>
          <Route path='/register' element={<Register/>}> </Route>
          <Route path='items/:itemId' element={

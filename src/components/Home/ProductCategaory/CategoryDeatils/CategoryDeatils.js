@@ -7,7 +7,9 @@ const CategoryDeatils = ({item}) => {
       const navigate=useNavigate()
      
       const handleStock=id=>{
-            navigate(`/additem`);
+            navigate(`/items/${id}`);
+
+         
            
       }
       return (
@@ -24,6 +26,7 @@ const CategoryDeatils = ({item}) => {
                                <Card.Subtitle className="mb-2">In Stock :  {stock}</Card.Subtitle>
                               <Button onClick={()=>handleStock(_id)} > Manage Stock </Button>
                              </Card.Body>
+                             
                              </Card> 
             </div>
       );
