@@ -5,6 +5,7 @@ import './Dashboard.css';
 
 const Dashboard = () => {
       const [products]=useProducts();
+      
       return (
             
             <div className='bg-slate-50 m-2 p-4'>

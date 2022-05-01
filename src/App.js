@@ -32,7 +32,7 @@ function App() {
          <Route path='/blog' element={<Blog/>}> </Route>
          <Route path='/login' element={<Login/>}> </Route>
          <Route path='/register' element={<Register/>}> </Route>
-         <Route path='/stockhouse/:itemId' element={<StockHouse/>}> </Route>
+         <Route path='/items/:itemId' element={<StockHouse/>}></Route>
          <Route path='/*' element={<NotFoundPage/>}> </Route>
          
                  
