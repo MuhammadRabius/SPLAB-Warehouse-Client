@@ -6,7 +6,7 @@ const useItemCategory =(itemId)=>{
       
       useEffect(()=>{
            
-             fetch(`http://localhost:5000/items/${itemId}`)
+             fetch(` https://sleepy-thicket-75359.herokuapp.com/items/${itemId}`)
             .then(res=>res.json())
             .then(data=>setItem(data))
       },[itemId]);
