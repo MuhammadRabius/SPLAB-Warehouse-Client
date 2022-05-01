@@ -12,6 +12,7 @@ import Register from './components/Register/Register';
 import { ToastContainer } from 'react-bootstrap';
 import RequireAuth from './components/ReauireAuth/RequireAuth';
 import StockHouse from './components/StockHouse/StockHouse';
+import AddItem from './components/AddItem/AddItem';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
          <Route path='/login' element={<Login/>}> </Route>
          <Route path='/register' element={<Register/>}> </Route>
          <Route path='items/:itemId' element={<StockHouse/>}></Route>
+         <Route path='/additem' element={<AddItem/>}> </Route>
          <Route path='/*' element={<NotFoundPage/>}> </Route>
          
                  
