@@ -31,7 +31,7 @@ function App() {
 
 
          } > </Route>
-         <Route path='/agents' element={<Agents/>}> </Route>
+         <Route path='agents' element={<Agents/>}> </Route>
          <Route path='/blog' element={<Blog/>}> </Route>
          <Route path='/myitem' element={
            <RequireAuth>

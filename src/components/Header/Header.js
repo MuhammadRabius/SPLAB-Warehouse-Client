@@ -10,9 +10,7 @@ import { HiUserCircle} from "react-icons/hi";
 const Header = () => {
 
       const navigate =useNavigate();
-      const handleAppointment =()=>{
-            navigate('/appointment');
-      };
+      
       const [user]=useAuthState(auth);
     
       return (
@@ -25,10 +23,11 @@ const Header = () => {
                    <Nav className="me-auto gap-2 ">
                         <Nav.Link as={Link} to='/'>Dashboard</Nav.Link>
                         <Nav.Link as={Link} to='/manageproducts'>Manage Stock</Nav.Link>
-                              <Nav.Link as={Link} to='/agents'>Agents</Nav.Link>
+                              
                               <Nav.Link as={Link} to='/blog'>Blog</Nav.Link>
                               {
                                     user&&<>
+                                    <Nav.Link as={Link} to='/agents'>Agents</Nav.Link>
                                     <HiUserCircle/> <NavDropdown title={user.displayName}
                                       id="basic-nav-dropdown">
                                     <NavDropdown.Item as={Link} to='/manageproducts'>Manage Items</NavDropdown.Item>
@@ -44,7 +43,11 @@ const Header = () => {
                         
                         {
                               user?
-                              <button onClick={()=>signOut(auth)} className='border-2 rounded-lg p-2 mx-2 text-black hover:bg-blue-400 '>Sing Out</button>
+                              <button onClick={()=>{
+                                    signOut(auth)
+                                    navigate('/login');
+                              
+                              }} className='border-2 rounded-lg p-2 mx-2 text-black hover:bg-blue-400 '>Sing Out</button>
                               :
                               <Nav.Link className='border-2 rounded-lg p-2 mx-2 text-black hover:bg-blue-400 ' as={Link} to='/login'>Login</Nav.Link>
                         }
