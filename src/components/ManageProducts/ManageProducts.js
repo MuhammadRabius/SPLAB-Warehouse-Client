@@ -16,7 +16,7 @@ const ManageProducts = () => {
       const handleDelete=(itemId)=>{
             const proceed = window.confirm('Are you sure?');
         if(proceed){
-            const url =`http://localhost:5000/items/${itemId}`;
+            const url =`https://sleepy-thicket-75359.herokuapp.com/items/${itemId}`;
             console.log(url)
             fetch(url, {
                 method: 'DELETE'
@@ -42,10 +42,10 @@ const ManageProducts = () => {
                         <Card.Text>
                               Description: {item.description}
                         </Card.Text>
-                        <Card.Subtitle className="mb-2 ">Supplier:   b{item.supplier}</Card.Subtitle>
+                        <Card.Subtitle className="my-2 ">Supplier:{item.seller}</Card.Subtitle>
                         <Card.Title>In Stock: {item.stock}</Card.Title>
-                        <Card.Subtitle className="mb-2 ">Update/Added: {item?.date}</Card.Subtitle>
-                        <Card.Subtitle className="mb-2 ">Update/Added by: {item?.name}</Card.Subtitle>
+                        <Card.Subtitle className="my-2 ">Update/Added: {item?.date}</Card.Subtitle>
+                        <Card.Subtitle className="my-2 ">Update/Added by: {item?.name}</Card.Subtitle>
                        
                         <Button className='my-2 w-full' onClick={()=>handleStock(item._id)} variant="primary">Manage Stock</Button>
                         <br />

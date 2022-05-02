@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const AddItem = () => {
       const [user]=useAuthState(auth);
-      const navigate=useNavigate()
+      const navigate=useNavigate();
       const { register, handleSubmit } = useForm();
       const onSubmit = (data) => {
             const url = `https://sleepy-thicket-75359.herokuapp.com/items`;
@@ -40,7 +40,7 @@ const AddItem = () => {
                         <textarea className='border-2 p-2' {...register("description")}  placeholder='Write Medicine Description' />
                         <input className='border-2 p-2' type="number" {...register("stock")}  placeholder='Stock'/>
                         <input className='border-2 p-2' type="number" {...register("price")}  placeholder='Per Unit Price'/>
-                         <input className='border-2 p-2' {...register("seller")}  placeholder='Mention Seller Name' />
+                        <input type="text" name="seller" id="seller" className='border-2 p-2' {...register("seller")} placeholder='Supplier'/>
                         <input className=' p-2 bg-blue-500 text-white' type="submit" value='Add Item' />
                   </form> 
                   </div>

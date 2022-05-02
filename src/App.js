@@ -14,6 +14,7 @@ import RequireAuth from './components/ReauireAuth/RequireAuth';
 import StockHouse from './components/StockHouse/StockHouse';
 import AddItem from './components/AddItem/AddItem';
 import MyItem from './components/MyItem/MyItem';
+import Footer from './components/CommonComponets/Footer/Footer';
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
 
 
       </Routes>
+      <Footer></Footer>
       <ToastContainer/>
 
 
