@@ -6,11 +6,11 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import logo from '../../images/logo.png' 
 import auth from '../../firebase.init';
 import { HiUserCircle} from "react-icons/hi";
+import useItemCategory from '../CustomHooks/useItemCategory';
 
 const Header = () => {
 
       const navigate =useNavigate();
-      
       const [user]=useAuthState(auth);
     
       return (
@@ -30,8 +30,8 @@ const Header = () => {
                                     <Nav.Link as={Link} to='/agents'>Agents</Nav.Link>
                                     <HiUserCircle/> <NavDropdown title={user.displayName}
                                       id="basic-nav-dropdown">
-                                    <NavDropdown.Item as={Link} to='/manageproducts'>Manage Items</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to='/additem'>Add Item</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to='/manageproducts'>Manage(Add/Update) Items</NavDropdown.Item>
+                                    
                                     <NavDropdown.Item as={Link} to='/myitem'>My Item</NavDropdown.Item>
                                     
                                     </NavDropdown>

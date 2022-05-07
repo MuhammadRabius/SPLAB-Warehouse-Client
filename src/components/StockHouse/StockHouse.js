@@ -44,7 +44,7 @@ const StockHouse = () => {
                                     state: {
                                    item : item
                                                       }
-                               })} className='border-1 bg-blue-500 p-2 mr-2 rounded-lg text-white'>Updated inventory</button>
+                               })} className='border-1 bg-blue-500 p-2 mr-2 rounded-lg text-white'>Add/Updated inventory</button>
                              
                       </div>
                 </div>

@@ -16,6 +16,7 @@ const AddItem = () => {
       const navigate=useNavigate();
       const { register, handleSubmit } = useForm();
       const onSubmit = (data) => {
+            console.log(data)
             const url = `https://sleepy-thicket-75359.herokuapp.com/items`;
         fetch(url, {
             method: 'POST',
