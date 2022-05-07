@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import axios from 'axios';
 
+
 const MyItem = () => {
       const [user]=useAuthState(auth);
       const [items,setItem]=useState([]);
@@ -14,7 +15,7 @@ const MyItem = () => {
 
               const email=user.email;
 
-              const url =`https://sleepy-thicket-75359.herokuapp.com?email=${email}`;
+              const url =`https://sleepy-thicket-75359.herokuapp.com/itemsbyemail?email=${email}`;
             
               const {data}=await axios.get(url);
                 console.log(data);
