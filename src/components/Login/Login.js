@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Form, Nav } from 'react-bootstrap';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword,useSendPasswordResetEmail, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
-import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
+
 import './Login.css';
 import SocialLogin from './SocialLogin/SocialLogin';
 import { toast } from 'react-hot-toast';
+import { async } from '@firebase/util';
 
 const Login = () => {
       const [email,setEmail]=useState('');
@@ -19,7 +20,7 @@ const Login = () => {
    
       const [sendPasswordResetEmail] = 
                   useSendPasswordResetEmail(auth);
-
+      const [sendEmailVerification] = useSendEmailVerification(auth);
 
       const handleEmail =event=>{
             
@@ -28,21 +29,21 @@ const Login = () => {
       }
       const handPassword =(event)=>{
             
-            setPassword(event.target.value);
+           setPassword(event.target.value);
            
       }
       const from = location.state?.from?.pathname ||'/';
-      const handleSubmit=(event)=>{
-           event.preventDefault();
-           if(user){
+
+      const handleSubmit=async(event)=>{
+           event.preventDefault()
+           if(!user){
             signInWithEmailAndPassword(email,password);
-             navigate(from,{replace:true});
-           } 
-           else{
-            setError('Invalid email or password');
-            return 
+           await sendEmailVerification(email);
+           navigate(from);
            }
-           
+           else{
+                 setError('Please make sure your email and Password')
+           }
       }
       return (
            <div className='login-container'>
@@ -67,8 +68,10 @@ const Login = () => {
                         
                         <p className='flex items-center text-1xl'>Create New Account?<Nav.Link as={Link} to='/register'>Register Now</Nav.Link></p>
                         <p className='flex items-center text-1xl'>Forgot Password<Nav.Link onClick={
-                              async()=>{await sendPasswordResetEmail(email)
-                               alert('Password Sent')} } >Reset Password</Nav.Link></p>
+                              async()=>{
+                              await sendPasswordResetEmail()
+                              alert('Reset-Password Sent')
+                              } } >Reset Password</Nav.Link></p>
                         <p>{error}</p>
                         <Button variant="primary" type="submit">
                         Submit
