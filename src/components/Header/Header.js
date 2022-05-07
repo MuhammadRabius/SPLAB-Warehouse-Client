@@ -17,7 +17,7 @@ const Header = () => {
             <div className='nav-container'>
                   <Navbar collapseOnSelect expand="lg" className='text-black hover:text-blue-700 bg-white-500 '>
                    <Container className='gap-8 p-2 fs-6 '>
-                   <Navbar.Brand className='lg:flex lg:justify-center lg:items-center font-thin gap-2 mx-auto' as={Link} to='/'> <img className=' w-20 lg:w-18 h-16 lg:h-14 mx-auto' src={logo} alt="" />Sreepur Laboratories Management</Navbar.Brand>
+                   <Navbar.Brand className='lg:flex lg:justify-center lg:items-center font-thin gap-2 mx-auto' as={Link} to='/'> <img className=' w-20 lg:w-18 h-16 lg:h-14 mx-auto' src={logo} alt="" />SPLAB STOCK MANAGEMENT</Navbar.Brand>
                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                    <Navbar.Collapse id="responsive-navbar-nav">
                    <Nav className="me-auto gap-2 ">

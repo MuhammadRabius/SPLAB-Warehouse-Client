@@ -1,51 +1,72 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import SocialLogin from '../Login/SocialLogin/SocialLogin';
-import './Register.css';
+import { Form, Button } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
+import { useState } from 'react';
+import SocialLogin from './../Login/SocialLogin/SocialLogin';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Register = () => {
+      const [name,setName]=useState('');
+      const [email,setEmail]=useState('');
+      const [password,setPassword]=useState('');
+      
+      const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
       const navigate=useNavigate();
-      const [
-        createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+      
 
-      const navigateLogin=()=>{
-            navigate('/login')
+      const handleName=(e)=>{
+            setName(e.target.value)
       }
+      const handleEmail=(e)=>{
+           setEmail(e.target.value);
+      }
+      const handlePassword=(e)=>{
+            setPassword(e.target.value);
+      }
+      const handleRegisterForm=(event)=>{
+            event.preventDefault();
 
-      const handleRegister=async(event)=>{
-        event.preventDefault();
-        const name = event.target.name.value;
-        const email = event.target.email.value;
-        const password = event.target.password.value;
-        
-        await createUserWithEmailAndPassword(email,password);
-        navigate('/login')
+            createUserWithEmailAndPassword(email,password);
+            event.target.reset();
+            navigate('/login');
       }
       return (
-            <div className='register-form'>
-                  <h2 style={{ textAlign: 'center' }}>Please Register</h2>
-            <form onSubmit={handleRegister}>
-                <input type="text" name="name" id="name" placeholder='Your Name' />
+            <div className=' w-50 mx-auto p-4 border-2 rounded-sm my-5'>
+                  <div>
+                        <h1 className='text-center'>Please Registration</h1>
+                  </div>
+                  <div className='p-2 m-2'>
+                        <Form onSubmit={handleRegisterForm}>
+                              
+                        <Form.Group className="mb-3" >
+                              <Form.Label >Your Name</Form.Label>
+                              <Form.Control type="text" placeholder="Enter your Name" onBlur={handleName} />
+                        </Form.Group>
 
-                <input type="email" name="email" id="email" placeholder='Email Address' required />
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                              <Form.Label >Email address</Form.Label>
+                              <Form.Control type="email" placeholder="Enter email" onBlur={handleEmail} required/>
+                              <Form.Text className="text-muted">
+                                    We'll never share your email with anyone else.
+                              </Form.Text>
+                              </Form.Group>
 
-                <input type="password" name="password" id="password" placeholder='Password' required /> 
-                <input
-                   
-                    className='w-50 mx-auto btn btn-primary mt-2'
-                    type="submit"
-                    value="Register" />               
-            </form>
-            <p>Already have an account? <Link to="/login" className='text-primary pe-auto text-decoration-none' onClick={navigateLogin}>Please Login</Link> </p>
-            <SocialLogin/>
+                              <Form.Group className="mb-3" controlId="formBasicPassword">
+                              <Form.Label>Password</Form.Label>
+                              <Form.Control type="password" placeholder="Password" onBlur={handlePassword} required />
+                              </Form.Group>
+                              <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                              <Form.Check type="checkbox" label="Check me out" />
+                              </Form.Group>
+                              <Button variant="primary" type="submit">
+                              Submit
+                              </Button>
+                        </Form>
+                  </div>
+                  
             </div>
       );
 };

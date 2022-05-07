@@ -3,7 +3,6 @@ import { Button, Form, Nav } from 'react-bootstrap';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
-
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import './Login.css';
 import SocialLogin from './SocialLogin/SocialLogin';
@@ -15,14 +14,10 @@ const Login = () => {
       const [error,setError]=useState('');
       const location=useLocation();
       const navigate =useNavigate();
-      const [
-                  signInWithEmailAndPassword,
-                  user,
-                  
-            ] = useSignInWithEmailAndPassword(auth);
+      const [signInWithEmailAndPassword,
+                  user] = useSignInWithEmailAndPassword(auth);
    
-            const [sendPasswordResetEmail, 
-                        sending] = 
+      const [sendPasswordResetEmail] = 
                   useSendPasswordResetEmail(auth);
 
 
@@ -40,8 +35,8 @@ const Login = () => {
       const handleSubmit=(event)=>{
            event.preventDefault();
            if(user){
-           signInWithEmailAndPassword(email,password);
-           navigate(from,{replace:true});
+            signInWithEmailAndPassword(email,password);
+             navigate(from,{replace:true});
            } 
            else{
             setError('Invalid email or password');
