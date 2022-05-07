@@ -1,6 +1,7 @@
 # SPLAB WareHouse Inventory Web Application
 
 This project was bootstrapped with [SPLAB WareHouse Inventory](https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-MuhammadRabius.git).
+This project Beckend was bootstrapped with [SPLAB WareHouse Inventory](https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-MuhammadRabius.git).
 This project Live Link [SPLAB WareHouse Inventory](https://splab-87a88.web.app/).
 
 ## We use HTML,CSS,Tailwind,ReactJs for this project.
