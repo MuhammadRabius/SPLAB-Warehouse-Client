@@ -16,7 +16,7 @@ const ManageProducts = () => {
       const handleDelete=(itemId)=>{
             const proceed = window.confirm('Are you sure?');
         if(proceed){
-            const url =`https://sleepy-thicket-75359.herokuapp.com/items/${itemId}`;
+            const url =`http://localhost:5000/items/${itemId}`;
             console.log(url)
             fetch(url, {
                 method: 'DELETE'

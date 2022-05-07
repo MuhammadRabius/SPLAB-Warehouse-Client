@@ -4,6 +4,8 @@ import useItemCategory from './../CustomHooks/useItemCategory';
 
 
 const StockHouse = () => {
+
+      const navigate=useNavigate();
       const {itemId}=useParams();
       const [item] =useItemCategory(itemId);
       
@@ -30,11 +32,19 @@ const StockHouse = () => {
                         </select>
                       </p>
                       <div className='text-end pt-4'>
-                            <Link to='/agents' >
-                              <button  className='border-1 bg-blue-500 p-2 mr-2 rounded-lg text-white'>Deliver to Dealer</button>
-                            </Link>
-                            <Link to='/additem'>
-                            <button className='border-1 bg-blue-500 p-2 mr-2 rounded-lg text-white'>Updated inventory</button></Link>
+                          
+                              <button  onClick={()=>navigate(`/agents`,{
+                                    state: {
+                                   item : item
+                                                      }
+                               })}  className='border-1 bg-blue-500 p-2 mr-2 rounded-lg text-white'>Deliver to Dealer</button>
+                           
+                            
+                            <button onClick={()=>navigate(`/additem`,{
+                                    state: {
+                                   item : item
+                                                      }
+                               })} className='border-1 bg-blue-500 p-2 mr-2 rounded-lg text-white'>Updated inventory</button>
                              
                       </div>
                 </div>

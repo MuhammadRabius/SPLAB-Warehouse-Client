@@ -1,12 +1,17 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import useItemCategory from '../CustomHooks/useItemCategory';
+import { useEffect } from 'react';
 
 
 const AddItem = () => {
+      const { state } = useLocation();
+      console.log(state)
+      const [stock,setStock]=useState();
       const [user]=useAuthState(auth);
       const navigate=useNavigate();
       const { register, handleSubmit } = useForm();
@@ -26,6 +31,28 @@ const AddItem = () => {
         alert('Successfully Added')
        navigate('/manageproducts')
       };
+
+      // update--Stock--------------------
+
+      const handleUpdateStock=(e)=>{
+          e.preventDefault();
+          console.log(state.item._id)
+          fetch(`http://localhost:5000/items/${state.item._id}`
+          ,
+          {
+            method: 'PUT',
+            headers: {
+                  'Content-Type': 'application/json'
+                  // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify({stock})
+          })
+          .then(res=>res.json())
+          .then(data=>{
+                navigate(`/items/${state.item._id}`)
+          })
+
+      }
       
       return (
             <div className='lg:flex justify-center items-center m-4 p-2 gap-3'>
@@ -47,6 +74,15 @@ const AddItem = () => {
 
                   <div className='mt-10 w-full lg:w-50 mx-auto my-10 p-6 mt-10 border-4'>
                          <h3 className='text-center text-4xl font-thin'>Update Item Stock</h3>
+                        <div className='text-center m-2 p-2'>
+                              <p>ItemID : {state.item._id}</p>
+                              <p>Category:{state.item.category}</p>
+                              <p>Category:{state.item.stock}</p>
+                              <form onSubmit={handleUpdateStock}>
+                              <input onChange={(e)=>setStock(e.target.value)} className='border-4 mr-3' type="number" name="number" id="number" />
+                             <input  className='border-2 bg-blue-500 text-white p-2 rounded-md' type="submit" value="Update Stock" />
+                              </form>
+                        </div>
                   </div>
             </div>
       );
