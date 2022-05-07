@@ -27,8 +27,7 @@ const Header = () => {
                               <Nav.Link as={Link} to='/blog'>Blog</Nav.Link>
                               {
                                     user&&<>
-                                    <Nav.Link as={Link} to='/agents'>Agents</Nav.Link>
-                                    <HiUserCircle/> <NavDropdown title={user.displayName}
+                                    <HiUserCircle className=''></HiUserCircle> <NavDropdown title={user.displayName}
                                       id="basic-nav-dropdown">
                                     <NavDropdown.Item as={Link} to='/manageproducts'>Manage(Add/Update) Items</NavDropdown.Item>
                                     

@@ -78,10 +78,10 @@ const AddItem = () => {
                         <div className='text-center m-2 p-2'>
                               <p>ItemID : {state.item._id}</p>
                               <p>Category:{state.item.category}</p>
-                              <p>Category:{state.item.stock}</p>
+                              <p>Current Stock:{state.item.stock}</p>
                               <form onSubmit={handleUpdateStock}>
                               <input onChange={(e)=>setStock(e.target.value)} className='border-4 mr-3' type="number" name="number" id="number" />
-                             <input  className='border-2 bg-blue-500 text-white p-2 rounded-md' type="submit" value="Update Stock" />
+                             <input  className='border-2 bg-blue-500 text-white p-2 rounded-md mt-4' type="submit" value="Update Stock" />
                               </form>
                         </div>
                   </div>
