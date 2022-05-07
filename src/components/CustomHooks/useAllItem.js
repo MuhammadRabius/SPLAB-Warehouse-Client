@@ -6,7 +6,7 @@ const useAllItem =()=>{
      
 
       useEffect(()=>{
-            fetch('http://localhost:5000/items')
+            fetch('https://sleepy-thicket-75359.herokuapp.com/items')
             .then(res=>res.json())
             .then(data=>setItem(data))
       },[]);

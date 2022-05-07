@@ -14,7 +14,7 @@ const MyItem = () => {
 
               const email=user.email;
 
-              const url =`http://localhost:5000/itemsbyemail?email=${email}`;
+              const url =`https://sleepy-thicket-75359.herokuapp.com?email=${email}`;
             
               const {data}=await axios.get(url);
                 console.log(data);

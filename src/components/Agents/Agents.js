@@ -8,7 +8,7 @@ const Agents = () => {
       const handleUpdateStock=(e)=>{
           e.preventDefault();
           console.log(state.item._id)
-          fetch(`http://localhost:5000/items_delivery/${state.item._id}`
+          fetch(`https://sleepy-thicket-75359.herokuapp.com/items_delivery/${state.item._id}`
           ,
           {
             method: 'PUT',
