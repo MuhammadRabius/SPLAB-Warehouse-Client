@@ -4,7 +4,9 @@ This project was bootstrapped with [SPLAB WareHouse Inventory](https://github.co
 This project Beckend was bootstrapped with [SPLAB WareHouse Inventory](https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-MuhammadRabius.git).
 This project Live Link [SPLAB WareHouse Inventory](https://splab-87a88.web.app/).
 
-## We use HTML,CSS,Tailwind,ReactJs for this project.
+	A warehouse management website, where sellers can add their products by giving product description
+	In the stock update form, sellers can update the number of their products & the sellers can only see their added products.
+
 
 
 ### `Create React App for creating Application`
